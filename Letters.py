@@ -1,8 +1,11 @@
+# author : Sheraz Ahmed
 import turtle
 
-
+# Class Definition for drawing Alphabets
 class DrawableAlphabets:
-    def draw_a(letter):
+    # function to Draw A
+    @classmethod
+    def draw_a(cls,letter):
         letter.left(75)
         letter.forward(200)
         letter.left(35)
@@ -14,8 +17,9 @@ class DrawableAlphabets:
         letter.right(140)
         letter.forward(80)
 
-
-    def draw_s(letter):
+    # function to Draw S
+    @classmethod
+    def draw_s(cls,letter):
         for i in range(1, 4):
             letter.forward(100)
             letter.left(90)
@@ -24,7 +28,11 @@ class DrawableAlphabets:
         letter.left(90)
         letter.forward(100)
 
-    def draw_art(self, character):
+    #function to draw initials SA
+    # def draw_art(self, character):
+    @classmethod
+    def draw_my_initials(cls):
+
         window = turtle.Screen()
         window.bgcolor("#000000")
 
@@ -32,15 +40,26 @@ class DrawableAlphabets:
         aplhabet.shape('turtle')
         aplhabet.speed(1)
         aplhabet.color('#fff')
+        DrawableAlphabets.draw_gap(aplhabet,'backward',120)
+        DrawableAlphabets.draw_s(aplhabet)
+        DrawableAlphabets.draw_gap(aplhabet,'forward',50)
+        DrawableAlphabets.draw_a(aplhabet)
 
-        if character == 'a':
-            DrawableAlphabets.draw_a(aplhabet)
-        if character == 's':
-            DrawableAlphabets.draw_s(aplhabet)
         window.exitonclick()
 
+# gap between letters
+    @classmethod
+    def draw_gap(cls, aplhabet,dir,steps):
+        aplhabet.color('#000')
+        aplhabet.home()
+        if dir == 'backward':
+            aplhabet.backward(steps)
+        if dir == 'forward':
+            aplhabet.forward(steps)
+        aplhabet.color('#fff')
+        pass
 
-# initials_s = DrawableAlphabets()
-initials_a = DrawableAlphabets()
-# initials_s.draw_art('s')
-initials_a.draw_art('a')
+
+# Code Run
+initials = DrawableAlphabets()
+initials.draw_my_initials()
